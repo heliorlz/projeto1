@@ -1,4 +1,3 @@
-# from inspect import signature
 from random import randint
 
 from faker import Faker
@@ -9,7 +8,6 @@ def rand_ratio():
 
 
 fake = Faker("pt_BR")
-# print(signature(fake.random_number))
 
 
 def make_recipe():
@@ -29,7 +27,7 @@ def make_recipe():
         },
         "category": {"name": fake.word()},
         "cover": {
-            "url": "https://loremflickr.com/%s/%s/food,cook" % rand_ratio(),
+            "url": "https://loremflickr.com/{}/{}/food,cook".format(*rand_ratio()),
         },
     }
 
