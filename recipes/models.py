@@ -1,4 +1,12 @@
+from django.contrib.auth.models import User
 from django.db import models
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=65)
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class Recipe(models.Model):
@@ -18,8 +26,9 @@ class Recipe(models.Model):
         upload_to="recipes/covers/%Y/%m/%d/", blank=True, null=True
     )
     category = models.ForeignKey(
-        "categories.Category", on_delete=models.SET_NULL, null=True, blank=True
+        Category, on_delete=models.SET_NULL, null=True, blank=True
     )
-    author = models.ForeignKey(
-        "authors.Author", on_delete=models.SET_NULL, null=True, blank=True
-    )
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.title
