@@ -37,3 +37,7 @@ def recipe(request, id):  # noqa: A002
         "recipes/pages/recipe-view.html",
         context={"recipe": recipe, "is_detail_page": True},
     )
+
+
+def search(request):
+    return render(request, "recipes/pages/search.html")
